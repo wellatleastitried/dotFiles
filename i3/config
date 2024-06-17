@@ -193,7 +193,7 @@ set $ubgcolor           #ff0000
 set $separatorcolor     #EE4B2B
 set $itextcolor         #969696
 
-#                       border          background      text            indicator
+# ###############       border          background      text            indicator
 client.focused          $fws            $fws            $textcolor      $bgcolor
 client.unfocused        $ibgcolor       $ibgcolor       $textcolor      $ibgcolor
 client.focused_inactive $ibgcolor       $ibgcolor       $textcolor      $ibgcolor
@@ -208,7 +208,7 @@ bar {
         colors {
                 background      $barcolor
                 separator       $separatorcolor
-                #                       border          background              text
+                # ###############       border          background              text
                 focused_workspace       $fws            $barcolor               $textcolor
                 inactive_workspace      $barcolor       $barcolor               $itextcolor
                 urgent_workspace        $ubgcolor       $ubgcolor               $textcolor
