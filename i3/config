@@ -219,7 +219,8 @@ bar {
 exec_always --no-startup-id feh --bg-fill /home/walitsnb/Pictures/darktooth.png
 
 # Keybinding for i3lock
-bindsym $mod+Shift+i exec --no-startup-id i3lock
+# bindsym $mod+Shift+i exec --no-startup-id i3lock
+bindsym $mod+Shift+i exec --no-startup-id /home/walitsnb/.config/i3lock-fancy/i3lock-fancy
 
 # Assign programs to workspace
 for_window [class="firefox"] move to workspace $ws2
@@ -231,3 +232,7 @@ exec_always --no-startup-id picom -f --config /home/walitsnb/.config/picom/picom
 
 # Remove title bar from windows
 for_window [class="^.*"] border pixel 0
+
+# Configure gaps around windows
+gaps inner 10
+# gaps outer 5
