@@ -237,3 +237,10 @@ for_window [class="^.*"] border pixel 0
 # Configure gaps around windows
 gaps inner 10
 # gaps outer 5
+
+
+# Check what is on clipboard
+# bindsym $mod+Shift+o exec --no-startup-id /home/walit/.config/scripts/printClipboard.sh
+
+# Generate QR code on screen for link in clipboard
+# bindsym $mod+Shift+p exec --no-startup-id /home/walit/.config/scripts/qrHandler.sh
