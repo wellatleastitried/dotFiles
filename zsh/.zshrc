@@ -103,3 +103,9 @@ source $ZSH_CUSTOM/.env.zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 source $ZSH_CUSTOM/aliases.zsh
+
+####################################################################
+#                          Keybinds                                #
+####################################################################
+# Set personal keybinds
+source $ZSH_CUSTOM/keybinds.zsh
