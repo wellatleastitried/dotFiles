@@ -5,7 +5,10 @@ EDITOR='zed'
 fzf_widget() {
     CURRENT_DIR=$(pwd)
     cd
-    zed "$(find -type f | fzf)"
+    FILE="$(find -type f | fzf)"
+    if [ -n "$FILE" ]; then
+        eval $EDITOR "$FILE"
+    fi
     cd $CURRENT_DIR
     zle reset-prompt
 }
