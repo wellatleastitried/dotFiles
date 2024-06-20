@@ -7,6 +7,7 @@ fzf_widget() {
     cd
     zed "$(find -type f | fzf)"
     cd $CURRENT_DIR
+    zle reset-prompt
 }
 zle -N fzf_widget
 bindkey '^F' fzf_widget
