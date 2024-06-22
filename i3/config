@@ -226,7 +226,7 @@ exec_always --no-startup-id feh --bg-fill /home/walitsnb/Pictures/wallpapers/dar
 # Keybinding for i3lock
 # bindsym $mod+Shift+i exec --no-startup-id i3lock
 # bindsym $mod+Shift+i exec --no-startup-id /home/walitsnb/.config/i3lock-fancy/i3lock-fancy
-bindsym $mod+Shift+i exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit lock
+# bindsym $mod+Shift+i exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit lock
 
 # Assign programs to workspace
 for_window [class="firefox"] move to workspace $ws2
