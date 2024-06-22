@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Enter current editor here
-EDITOR='zed'
+# EDITOR='zed' # Uncomment this line for Zed
+# EDITOR='nvim' # Uncomment this line for Neovim
+EDITOR='code' # Uncomment this line for VSCode
+# EDITOR='subl' # Uncomment this line for Sublime Text
 
 # Fuzzy finder for all files to open in editor
 fzf_widget() {

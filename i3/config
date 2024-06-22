@@ -31,6 +31,9 @@ exec --no-startup-id dex --autostart --environment i3
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id xss-lock --transfer-sleep-lock -- /home/walitsnb/.config/i3lock-fancy/i3lock-fancy --nofork
 
+# Autolock triggers xss-lock after idle delay
+exec --no-startup-id xautolock -time 10 -locker "xset s activate; xset dpms force off"
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -204,6 +207,7 @@ client.urgent           $ubgcolor       $ubgcolor       $textcolor      $ubgcolo
 # finds out, if available)
 bar {
         status_command i3status -c /home/walitsnb/.config/i3status/i3status.conf
+	# status_command SCRIPT_DIR=/home/walitsnb/.config/i3blocks/scripts i3blocks
         i3bar_command i3bar --transparency
         position top
         colors {
@@ -221,7 +225,8 @@ exec_always --no-startup-id feh --bg-fill /home/walitsnb/Pictures/wallpapers/dar
 
 # Keybinding for i3lock
 # bindsym $mod+Shift+i exec --no-startup-id i3lock
-bindsym $mod+Shift+i exec --no-startup-id /home/walitsnb/.config/i3lock-fancy/i3lock-fancy
+# bindsym $mod+Shift+i exec --no-startup-id /home/walitsnb/.config/i3lock-fancy/i3lock-fancy
+bindsym $mod+Shift+i exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit lock
 
 # Assign programs to workspace
 for_window [class="firefox"] move to workspace $ws2
@@ -240,7 +245,23 @@ gaps inner 10
 
 
 # Check what is on clipboard
-# bindsym $mod+Shift+o exec --no-startup-id /home/walit/.config/scripts/printClipboard.sh
+bindsym $mod+Shift+o exec --no-startup-id /home/walitsnb/.config/scripts/printClipboard.sh
 
 # Generate QR code on screen for link in clipboard
-# bindsym $mod+Shift+p exec --no-startup-id /home/walit/.config/scripts/qrHandler.sh
+bindsym $mod+Shift+p exec --no-startup-id /home/walitsnb/.config/scripts/qrHandler.sh
+
+# System controls
+bindsym $mod+Escape mode "System Control:"
+
+mode "System Control:" {
+    bindsym l exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/walitsnb/.config/i3/scripts/i3exit shutdown, mode "default"
+
+    # Back to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
