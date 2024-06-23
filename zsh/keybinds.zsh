@@ -10,7 +10,7 @@ EDITOR='code' # Uncomment this line for VSCode
 fzf_widget() {
     CURRENT_DIR=$(pwd)
     cd
-    FILE="$(find -type f | fzf)"
+    FILE="$(find -type f | fzf --height=15)"
     if [ -n "$FILE" ]; then
         eval $EDITOR "$FILE"
     fi
@@ -22,7 +22,7 @@ bindkey '^F' fzf_widget
 
 # Fuzzy finder for current directory
 fzf_local() {
-    FILE="$(find . -type f | fzf)"
+    FILE="$(find . -type f | fzf --height=15)"
     if [ -n "$FILE" ]; then
         eval $EDITOR "$FILE"
     fi

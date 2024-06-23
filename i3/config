@@ -193,7 +193,7 @@ bindsym $mod+r mode "resize"
 # Set colors
 set $bgcolor            #00000000
 set $fws                #00000000
-set $barcolor           #00000000
+set $barcolor           #000000cc
 set $ibgcolor           #96969699
 set $textcolor          #ffffff
 set $ubgcolor           #ff0000
@@ -247,7 +247,7 @@ bar {
 #####################################################################################
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill '/home/walitsnb/Pictures/wallpapers/cool_retro_city_thing.png'
+exec_always --no-startup-id feh --bg-fill '/home/walitsnb/Pictures/wallpapers/darkArch.png'
 
 # Keybinding for i3lock
 # bindsym $mod+Shift+i exec --no-startup-id i3lock
@@ -294,3 +294,6 @@ mode "System Control:" {
 
 # Ensure dunst starts up on login
 exec --no-startup-id dunst
+
+# Wallpaper changer
+bindsym $mod+Shift+w exec --no-startup-id /home/walitsnb/.config/scripts/wallpaperSetter.pl
