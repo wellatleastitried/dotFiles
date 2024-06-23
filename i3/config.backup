@@ -247,7 +247,7 @@ bar {
 #####################################################################################
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill '/home/walitsnb/Pictures/wallpapers/cool_retro_city_thing.png'
+exec_always --no-startup-id feh --bg-fill /home/walitsnb/Pictures/wallpapers/darkArch.png
 
 # Keybinding for i3lock
 # bindsym $mod+Shift+i exec --no-startup-id i3lock
