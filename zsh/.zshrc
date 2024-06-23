@@ -5,6 +5,8 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
 	exec startx
 fi
 
+export EDITOR=code
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
