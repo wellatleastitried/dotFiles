@@ -21,6 +21,14 @@ fill_repo() {
         echo "i3 directory does not exist!"
     fi
 
+    # Makefile and bash install scripts
+    if [ -d "$HOME/Documents/Dotfiles" ]; then
+        echo "Install scripts found: adding to repo..."
+        cp -r "$HOME/Documents/Dotfiles" .
+    else
+        echo "Install scripts do not exist!"
+    fi
+
     # picom conf
     if [ -d "$CONFIGS/picom" ]; then
         echo "picom config found: adding to repo..."
@@ -103,6 +111,19 @@ fill_repo() {
         cp -r "$HOME/.config/polybar" ./polybar
     else
         echo "Polybar directory does not exist!"
+    fi
+    
+    # Install scripts
+    if [ -d "$HOME/Documents/Dotfiles" ]; then
+        if [ ! -d ./install ]; then
+            echo "Install directory did not exist in repo: creating now..."
+            mkdir ./install
+        fi
+        echo "Install scripts found: adding files to repo..."
+        cp -r "$HOME/Documents/Dotfiles/install" ./install
+        cp "$HOME/Documents/Dotfiles/Makefile" .
+    else
+        echo "Install directory does not exist!"
     fi
 }
 
