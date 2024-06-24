@@ -116,7 +116,7 @@ fill_repo() {
     # Install scripts
     if [ -d "$HOME/Documents/Dotfiles" ]; then
         echo "Install scripts found: adding files to repo..."
-        cp -r "$HOME/Documents/Dotfiles" .
+        cp -r "$HOME/Documents/Dotfiles/*" .
     else
         echo "Install directory does not exist!"
     fi
