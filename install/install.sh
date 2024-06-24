@@ -8,15 +8,15 @@ cp -b "$PROJECT_DIR/zsh/.zshrc" "$HOME/.zshrc" || {
     echo "Error: Could not complete copy of .zshrc"
     exit 1
 }
-cp -b "$PROJECT_DIR/zsh/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh" || {
+cp -b "$PROJECT_DIR/zsh/custom/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh" || {
     echo "Error: Could not complete copy of aliases.zsh"
     exit 1
 }
-cp -b "$PROJECT_DIR/zsh/keybinds.zsh" "$HOME/.oh-my-zsh/custom/keybinds.zsh" || {
+cp -b "$PROJECT_DIR/zsh/custom/keybinds.zsh" "$HOME/.oh-my-zsh/custom/keybinds.zsh" || {
     echo "Error: Could not complete copy of keybinds.zsh"
     exit 1
 }
-cp -b "$PROJECT_DIR/zsh/kali.zsh" "$HOME/.oh-my-zsh/custom/kali.sh" || {
+cp -b "$PROJECT_DIR/zsh/custom/kali.zsh" "$HOME/.oh-my-zsh/custom/kali.sh" || {
     echo "Error: Could not complete copy of kali.sh"
     exit 1
 }

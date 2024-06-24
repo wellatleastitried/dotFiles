@@ -51,36 +51,36 @@ fill_repo() {
 
     # zshrc aliases-to-source
     if [ -f "$HOME/.oh-my-zsh/custom/aliases.zsh" ]; then
-        if [ ! -d ./zsh ]; then
+        if [ ! -d ./zsh/custom ]; then
             echo "zsh directory did not exist in repo: creating now..."
-            mkdir ./zsh
+            mkdir -p ./zsh/custom
         fi
         echo "aliases.zsh config found: adding to repo..."
-        cp -r "$HOME/.oh-my-zsh/custom/aliases.zsh" ./zsh/aliases.zsh
+        cp -r "$HOME/.oh-my-zsh/custom/aliases.zsh" ./zsh/custom/aliases.zsh
     else
         echo "aliases.zsh config does not exist!"
     fi
 
     # Remotely executed kali commands
     if [ -f "$HOME/Tools/SSHTools/kali.sh" ]; then
-        if [ ! -d ./zsh ]; then
+        if [ ! -d ./zsh/custom ]; then
             echo "zsh directory did not exist in repo: creating now..."
-            mkdir ./zsh
+            mkdir -p ./zsh/custom
         fi
         echo "kali.sh config found: adding to repo..."
-        cp -r "$HOME/Tools/SSHTools/kali.sh" ./zsh/kali.sh
+        cp -r "$HOME/Tools/SSHTools/kali.sh" ./zsh/custom/kali.sh
     else
         echo "kali.sh config does not exist!"
     fi
 
     # Keybinds for zsh
     if [ -f "$HOME/.oh-my-zsh/custom/keybinds.zsh" ]; then
-        if [ ! -d ./zsh ]; then
+        if [ ! -d ./zsh/custom ]; then
             echo "zsh directory did not exist in repo: creating now..."
-            mkdir ./zsh
+            mkdir -p ./zsh/custom
         fi
         echo "keybinds.zsh config found: adding to repo..."
-        cp -r "$HOME/.oh-my-zsh/custom/keybinds.zsh" ./zsh/keybinds.zsh
+        cp -r "$HOME/.oh-my-zsh/custom/keybinds.zsh" ./zsh/custom/keybinds.zsh
     else
         echo "keybinds.zsh config does not exist!"
     fi
@@ -137,7 +137,13 @@ add_commit_push() {
         echo "Commiting changes to configs..."
         git commit -m "Updated configs"
     fi
-    git push origin main
+    # Check whether to push to remote
+    read -r -p "Would you like to push to remote? (Y/n): " user_input
+    if [[ $user_input =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        echo "Pushing commit to remote..."
+        git push origin main
+        echo "Dotfiles have been successfully updated!"
+    fi
 }
 
 clear_repo
