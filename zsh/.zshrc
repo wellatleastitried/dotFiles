@@ -12,8 +12,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Themes (See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="passion"
+# ZSH_THEME="passion"
 # ZSH_THEME="mrtazz"
+source "$ZSH/themes/cool.zsh"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "mrtazz" )
 
 # Uncomment the following line to use case-sensitive completion.
