@@ -21,14 +21,6 @@ fill_repo() {
         echo "i3 directory does not exist!"
     fi
 
-    # Makefile and bash install scripts
-    if [ -d "$HOME/Documents/Dotfiles" ]; then
-        echo "Install scripts found: adding to repo..."
-        cp -r "$HOME/Documents/Dotfiles" .
-    else
-        echo "Install scripts do not exist!"
-    fi
-
     # picom conf
     if [ -d "$CONFIGS/picom" ]; then
         echo "picom config found: adding to repo..."
