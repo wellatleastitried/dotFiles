@@ -143,6 +143,9 @@ add_commit_push() {
         echo "Pushing commit to remote..."
         git push origin main
         echo "Dotfiles have been successfully updated!"
+    else
+        echo "Changes have been committed, exiting now..."
+        exit 1
     fi
 }
 
