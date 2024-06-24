@@ -85,6 +85,18 @@ fill_repo() {
         echo "keybinds.zsh config does not exist!"
     fi
     
+    # zsh themes
+    if [ -f "$HOME/.oh-my-zsh/themes/passion.zsh-theme" ]; then
+        if [ ! -d ./zsh/themes ]; then
+            echo "zsh themes directory did not exist in repo: creating now..."
+            mkdir -p ./zsh/themes
+        fi
+        echo "passion.zsh-theme found: adding to repo..."
+        cp -r "$HOME/.oh-my-zsh/themes/passion.zsh-theme" ./zsh/themes/passion.zsh-theme
+    else
+        echo "passion.zsh-theme does not exist"
+    fi
+
     # Rofi config
     if [ -f "$HOME/.config/rofi/config.rasi" ]; then
         if [ ! -d ./rofi ]; then

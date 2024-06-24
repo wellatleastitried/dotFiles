@@ -20,6 +20,10 @@ cp -b "$PROJECT_DIR/zsh/kali.zsh" "$HOME/.oh-my-zsh/custom/kali.sh" || {
     echo "Error: Could not complete copy of kali.sh"
     exit 1
 }
+cp -b "$PROJECT_DIR/zsh/themes/passion.zsh-theme" "$HOME/.oh-my-zsh/themes/passion.zsh-theme" || {
+    echo "Error: Could not complete copy of passion.zsh-theme"
+    exit 1
+}
 
 # Copy i3 configs
 cp -rb "$PROJECT_DIR/i3" "$HOME/.config/i3" || {
