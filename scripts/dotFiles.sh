@@ -115,10 +115,6 @@ fill_repo() {
     
     # Install scripts
     if [ -d "$HOME/Documents/Dotfiles" ]; then
-        if [ ! -d ./install ]; then
-            echo "Install directory did not exist in repo: creating now..."
-            mkdir ./install
-        fi
         echo "Install scripts found: adding files to repo..."
         cp -r "$HOME/Documents/Dotfiles/install" ./install
         cp "$HOME/Documents/Dotfiles/Makefile" .
