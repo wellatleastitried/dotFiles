@@ -113,3 +113,6 @@ source $ZSH_CUSTOM/aliases.zsh
 ####################################################################
 # Set personal keybinds
 source $ZSH_CUSTOM/keybinds.zsh
+
+# DELETE THIS LINE WHEN DONE TESTING
+source "$HOME/Tools/SSHTools/.env.sh"
