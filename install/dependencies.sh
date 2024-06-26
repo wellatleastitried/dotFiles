@@ -25,9 +25,17 @@ else
     echo "yay is already installed."
 fi
 
+if ! command_exists perl; then
+    echo "Perl not installed: installing now..."
+    sudo pacman -Syu --needed perl
+    echo "Perl has been installed"
+else
+    echo "Perl is already installed"
+fi
+
 if ! command_exists polybar; then
     echo "Polybar not installed: installing now..."
-    pacman -Syu --needed polybar
+    sudo pacman -Syu --needed polybar
     echo "Polybar has been installed."
 else
     echo "Polybar is already installed."
