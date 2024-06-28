@@ -8,5 +8,6 @@ alias burpsuite="$MY_HOME/Tools/BurpSuiteCommunity/BurpSuiteCommunity"
 alias zed='zeditor'
 alias updateConfigRepo="$MY_HOME/.config/scripts/dotFiles.sh"
 alias quickScan="$MY_HOME/.config/scripts/port_scanner.pl"
+alias wifiCLI="$MY_HOME/.config/scripts/wifiHandler.sh"
 
 source $REMOTE_TOOLS/kali.sh

@@ -34,7 +34,7 @@ if (@ARGV != 3) {
     die "Usage: $0 <host> <start-port> <end-port>\n";
 }
 my ($host, $start_port, $end_port) = @ARGV;
-my $timeout = 5;
+my $timeout = 3;
 sub scan_port {
     my ($host, $port) = @_;
     my $socket = IO::Socket::INET->new(
