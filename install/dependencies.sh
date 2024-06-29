@@ -27,7 +27,7 @@ fi
 
 if ! command_exists perl; then
     echo "Perl not installed: installing now..."
-    sudo pacman -Syu --needed perl
+    sudo pacman -Syu --needed perl perl-term-extendedcolor
     echo "Perl has been installed"
 else
     echo "Perl is already installed"

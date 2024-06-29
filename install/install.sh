@@ -55,4 +55,10 @@ cp -rb "$PROJECT_DIR/scripts" "$HOME/.config/scripts" || {
     exit 1
 }
 
+# Copy i3blocks configs
+cp -rb "$PROJECT_DIR/i3blocks" "$HOME/.config/i3blocks" || {
+    echo "Error: Could not complete copy of i3blocks config and scripts"
+    exit 1
+}
+
 echo "Files have been successfully deployed."
