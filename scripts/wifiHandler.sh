@@ -17,10 +17,15 @@ for (( i=0; i<${#ssids[@]}; i++ )); do
     echo "[$(($i + 1))] ${ssids[i]}"
 done
 printf "\n"
-read -p "Enter the number next to the network you would like to connect to: " choice
-if [[ $choice =~ ^[0-9]+$ ]] && (( choice >= 1)) && (( choice <= ${#ssids[@]} )); then
-    selected_network="${ssids[choice - 1]}"
-    echo "You selected: $selected_network"
+read -p "Enter the number next to the network you would like to connect to (0 to quit): " choice
+if [[ $choice =~ ^[0-9]+$ ]] && (( choice >= 0 )) && (( choice <= ${#ssids[@]} )); then
+    if (( choice == 0 )); then
+        echo "Exiting..."
+        exit 1
+    else
+        selected_network="${ssids[choice - 1]}"
+        echo "You selected: $selected_network"
+    fi
 else
     echo "That was not a valid number, exiting..."
     exit 1

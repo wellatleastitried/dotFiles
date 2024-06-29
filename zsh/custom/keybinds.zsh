@@ -6,6 +6,19 @@
 EDITOR='code' # Uncomment this line for VSCode
 # EDITOR='subl' # Uncomment this line for Sublime Text
 
+# Open current directory in intellij
+ij_widget() {
+    CURRENT_DIR=$(pwd)
+    if [ ! -d "$CURRENT_DIR/.git" ]; then
+        echo "Not a git repository."
+        zle reset-prompt
+    else
+        idea "$CURRENT_DIR"
+    fi
+}
+zle -N ij_widget
+bindkey '^J' ij_widget
+
 # Fuzzy finder for all files to open in editor
 fzf_widget() {
     CURRENT_DIR=$(pwd)
