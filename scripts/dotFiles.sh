@@ -124,6 +124,30 @@ fill_repo() {
     else
         echo "Install directory does not exist!"
     fi
+    
+    # i3blocks config/scripts
+    if [ -d "$HOME/.config/i3blocks" ]; then
+        if [ -f "$HOME/.config/i3blocks/i3blocks.conf" ]; then
+            echo "i3blocks config found: adding file to repo..."
+            if [ ! -d ./i3blocks ]; then
+                echo "i3blocks directory did not exist in repo: creating now..."
+                mkdir ./i3blocks
+            fi
+            cp -r "$HOME/.config/i3blocks/i3blocks.conf" ./i3blocks
+        else
+            echo "i3blocks config does not exist!"
+        fi
+        if [ -d "$HOME/.config/i3blocks/scripts" ]; then
+            echo "i3blocks script directory found: adding files to repo..."
+            if [ ! -d ./i3blocks/scripts ]; then
+                echo "i3blocks script directory did not exist in repo: creating now..."
+                mkdir ./i3blocks/scripts
+            fi
+            cp -r "$HOME/.config/i3blocks/scripts/." ./i3blocks/scripts
+        else
+            echo "Scripts for i3blocks do not exist!"
+        fi
+    fi 
 }
 
 # Add and commit new files
