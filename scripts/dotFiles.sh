@@ -1,4 +1,4 @@
-j#!/bin/bash
+#!/bin/bash
 
 TARGET="$HOME/Github/dotFiles"
 CONFIGS="$HOME/.config"
@@ -154,7 +154,7 @@ fill_repo() {
 add_commit_push() {
     echo "Adding configs to git..."
     git add .
-    if git diff-index --quiet HEAD --; then
+    if ! git diff-index HEAD --; then
         echo "No changes to commit: exiting..."
         exit 0
     else
