@@ -42,6 +42,9 @@ else
         printf "\nAttempting to reconnect with password...\n"
         if ! connect_to_pp_network "$selected_network" "$password"; then
             echo "Unable to connect to $selected_network"
+            exit 1
+        else
+            printf "\nSuccessfully connected to %s\n" "$selected_network"
         fi
     fi
 fi

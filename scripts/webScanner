@@ -1,0 +1,107 @@
+#!/usr/bin/perl
+
+use File::Path qw(rmtree make_path);
+use File::Spec;
+use strict;
+use warnings;
+use Term::ANSIColor;
+
+# Custom die to remove debugging info
+sub Die {
+    my ($message) = @_;
+    local $@;
+    die color('red'), "$message\n", color('reset');
+}
+
+sub success {
+    my ($message) = @_;
+    print color('green'), "$message\n", color('reset');
+}
+
+sub fail {
+    my ($message) = @_;
+    print color('red'), "$message\n", color('reset');
+}
+
+if (@ARGV < 1 || @ARGV > 1) {
+    Die("Incorrect number of arguments!\n\nUsage: webScan <url>");
+}
+
+# Change this wordlist if there is a better one to use instead.
+my $dirWordlist = "/usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt";
+
+my $url = $ARGV[0];
+
+sub validate_url {
+    my ($url) = @_;
+    my $response = `curl -o /dev/null -s -w "%{http_code}\n" $url`;
+    chomp($response);
+    return $response;
+}
+
+# Extract name for the directory to save results
+sub get_name_from_url {
+    my $name;
+    if ($url =~ m|https?://([^/]+)|) {
+        my $host = $1;
+        if ($host =~ /(?:[a-z0-9-]+\.)?([a-z0-9-]+)\.(?:[a-z]{2,}|co\.[a-z]{2,})$/i) {
+            $name = $1;
+        }
+    } else {
+        Die("Could not extract name from URL.");
+    }
+    return $name;
+}
+
+sub find_robots_txt {
+    my ($url) = @_;
+    my $robots_url = "$url/robots.txt";
+    my $response = `curl -o /dev/null -s -w "%{http_code}\n" $robots_url`;
+    chomp($response);
+    return $response;
+}
+
+my $http_code = validate_url($url);
+my $name = get_name_from_url($url);
+
+# Make sure website is reachable
+if ($http_code == 000) {
+    Die("Could not connect to the internet.");
+} elsif ($http_code < 200 || $http_code >= 400) {
+    Die("Invalid URL provided.");
+} else {
+    print "$url response: $http_code\n";
+}
+
+# Create directory to save results
+print "Name from URL: $name\n";
+my $store_dir = File::Spec->catdir($ENV{HOME}, 'Documents', 'WebScanResults', $name);
+if (-d $store_dir) {
+    rmtree($store_dir) or Die("Failed to remove directory $store_dir: $!");
+}
+make_path($store_dir) or Die("Failed to create directory $store_dir: $!");
+if (-d $store_dir) {
+    success("Directory $store_dir has been successfully created and is now empty.");
+} else {
+    Die("Failed to confirm the creation of directory $store_dir.");
+}
+
+# Enumerate subdirectories
+my $gobuster_output = `gobuster dir --wordlist=$dirWordlist -u $url -o /dev/null 2>&1`;
+my $gobuster_results = File::Spec->catfile($store_dir, 'subdirectories.txt');
+open(my $fh, '>', $gobuster_results) or Die("Could not open file '$gobuster_results' $!");
+foreach my $line (split /\n/, $gobuster_output) {
+    if ($line !~ /\s*404\s*$/) {
+        print $fh "$line\n";
+    }
+}
+close($fh);
+success("Gobuster results saved to $gobuster_results.");
+
+# Check for robots.txt
+my $robot_response = find_robots_txt($url);
+if ($robot_response < 200 || $robot_response >= 400) {
+    fail("robots.txt not found.");
+} else {
+    success("robots.txt found at $url/robots.txt");
+}
