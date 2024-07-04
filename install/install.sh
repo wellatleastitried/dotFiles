@@ -24,6 +24,10 @@ cp -b "$PROJECT_DIR/zsh/themes/passion.zsh-theme" "$HOME/.oh-my-zsh/themes/passi
     echo "Error: Could not complete copy of passion.zsh-theme"
     exit 1
 }
+cp -b "$PROJECT_DIR/zsh/themes/cool.zsh" "$HOME/.oh-my-zsh/themes/cool.zsh" || {
+    echo "Error: Could not complete copy of coolzsh"
+    exit 1
+}
 
 # Copy i3 configs
 cp -rb "$PROJECT_DIR/i3" "$HOME/.config/i3" || {
