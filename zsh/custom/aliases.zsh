@@ -10,5 +10,6 @@ alias updateConfigRepo="$MY_HOME/.config/scripts/dotFiles.sh"
 alias quickScan="$MY_HOME/.config/scripts/port_scanner"
 alias wifiCLI="$MY_HOME/.config/scripts/wifiHandler"
 alias checkEmail="$MY_HOME/.config/scripts/unreadEmail"
+alias webScan="$MY_HOME/.config/scripts/webScanner"
 
 source $REMOTE_TOOLS/kali.sh
