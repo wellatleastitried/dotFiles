@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ -z "$wAdapt" ]; then
+    echo "Error: Wireless Interface environment variable is not set."
+    exit 1
+fi
+sudo ifconfig $wAdapt down
+sudo iwconfig $wAdapt mode monitor
+sudo ifconfig $wAdapt up
+iwconfig $wAdapt | grep Mode

@@ -11,5 +11,6 @@ alias quickScan="$MY_HOME/.config/scripts/port_scanner"
 alias wifiCLI="$MY_HOME/.config/scripts/wifiHandler"
 alias checkEmail="$MY_HOME/.config/scripts/unreadEmail"
 alias webScan="$MY_HOME/.config/scripts/webScanner"
+alias setMonitorMode="$MY_HOME/.config/scripts/setMonitorMode"
 
 source $REMOTE_TOOLS/kali.sh
