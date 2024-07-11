@@ -15,6 +15,12 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="passion"
 # ZSH_THEME="mrtazz"
 source "$ZSH/themes/cool.zsh"
+
+# Pure prompt settings
+#fpath+=($ZSH/themes/pure)
+#source "$ZSH/themes/pure/pure.zsh"
+#source "$ZSH/themes/pure/async.zsh"
+
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "mrtazz" )
 
 # Uncomment the following line to use case-sensitive completion.

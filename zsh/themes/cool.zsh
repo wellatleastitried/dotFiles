@@ -15,8 +15,8 @@
 # ░░░░░░░░░░
 
 #ICO_DIRTY="*"
-#ICO_DIRTY="↯"
-ICO_DIRTY="⚡"
+ICO_DIRTY="↯"
+#ICO_DIRTY="⚡"
 
 ICO_AHEAD="↑"
 #ICO_AHEAD=""
@@ -32,7 +32,8 @@ ICO_DIVERGED="↕"
 
 
 COLOR_ROOT="%F{red}"
-COLOR_USER="%F{cyan}"
+#COLOR_USER="%F{cyan}"
+COLOR_USER="%F{red}"
 COLOR_NORMAL="%F{white}"
 PROMPT_STYLE="classic"
 
