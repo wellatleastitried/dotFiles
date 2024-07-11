@@ -9,8 +9,8 @@ EDITOR='code' # Uncomment this line for VSCode
 # Open current directory in intellij
 ij_widget() {
     CURRENT_DIR=$(pwd)
-    if [ ! -d "$CURRENT_DIR/.git" ]; then
-        echo "Not a git repository."
+    if [ ! -d "$CURRENT_DIR/src/main/java" ]; then
+        echo "Likely not a Java project!"
         zle reset-prompt
     else
         idea "$CURRENT_DIR"
