@@ -70,4 +70,8 @@ cp -rb "$PROJECT_DIR/neofetch" "$HOME/.config/neofetch/config.conf" || {
     echo "Error: Could not complete copy of neofetch config"
     exit 1
 }
+
+# Grub configuration
+sudo ./"$PROJECT_DIR/grub/GreyFocus/install.sh"
+
 echo "Files have been successfully deployed."
