@@ -65,4 +65,9 @@ cp -rb "$PROJECT_DIR/i3blocks" "$HOME/.config/i3blocks" || {
     exit 1
 }
 
+# Neofetch config
+cp -rb "$PROJECT_DIR/neofetch" "$HOME/.config/neofetch/config.conf" || {
+    echo "Error: Could not complete copy of neofetch config"
+    exit 1
+}
 echo "Files have been successfully deployed."

@@ -2,11 +2,13 @@
 
 # Dependencies listed, in order:
 # yay
+# perl
 # polybar
 # picom
 # oh-my-zsh
 # rofi
 # dmenu
+# neofetch
 
 command_exists() {
     command -v "$1" &> /dev/null
@@ -27,7 +29,7 @@ fi
 
 if ! command_exists perl; then
     echo "Perl not installed: installing now..."
-    sudo pacman -Syu --needed perl perl-term-extendedcolor
+    sudo pacman -S --needed perl perl-term-extendedcolor
     echo "Perl has been installed"
 else
     echo "Perl is already installed"
@@ -35,7 +37,7 @@ fi
 
 if ! command_exists polybar; then
     echo "Polybar not installed: installing now..."
-    sudo pacman -Syu --needed polybar
+    sudo pacman -S --needed polybar
     echo "Polybar has been installed."
 else
     echo "Polybar is already installed."
@@ -43,7 +45,7 @@ fi
 
 if ! command_exists picom; then
     echo "Picom not installed: installing now..."
-    sudo pacman -Syu --needed picom
+    sudo pacman -S --needed picom
     echo "Picom has been installed."
 else
     echo "Picom is already installed."
@@ -59,7 +61,7 @@ fi
 
 if ! command_exists rofi; then
     echo "Rofi is not installed: installing now..."
-    sudo pacman -Syu --needed rofi
+    sudo pacman -S --needed rofi
     echo "rofi has been installed."
 else
     echo "Rofi is already installed."
@@ -67,10 +69,18 @@ fi
 
 if ! command_exists dmenu; then
     echo "dmenu is not installed: installing now..."
-    sudo pacman -Syu --needed dmenu
+    sudo pacman -S --needed dmenu
     echo "dmenu has been installed."
 else
     echo "dmenu is already installed."
+fi
+
+if ! command_exists neofetch; then
+    echo "neofetch is not installed: installing now..."
+    sudo pacman -S --needed neofetch
+    echo "neofetch has been installed"
+else
+    echo "neofetch is already installed."
 fi
 
 echo "All dependencies are up-to-date!"
