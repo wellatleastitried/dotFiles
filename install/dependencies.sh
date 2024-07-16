@@ -9,6 +9,7 @@
 # rofi
 # dmenu
 # neofetch
+# Neovim
 
 command_exists() {
     command -v "$1" &> /dev/null
@@ -81,6 +82,14 @@ if ! command_exists neofetch; then
     echo "neofetch has been installed"
 else
     echo "neofetch is already installed."
+fi
+
+if ! command_exists nvim; then
+    echo "nvim is not installed: installing now..."
+    sudo pacman -S --needed nvim
+    echo "nvim has been installed"
+else
+    echo "nvim is already installed."
 fi
 
 echo "All dependencies are up-to-date!"

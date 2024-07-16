@@ -71,6 +71,12 @@ cp -rb "$PROJECT_DIR/neofetch" "$HOME/.config/neofetch/config.conf" || {
     exit 1
 }
 
+# Neovim config
+cp -rb "$PROJECT_DIR/nvim" "$HOME/.config" || {
+    echo "Error: Could not complete copy of neovim config"
+    exit 1
+}
+
 # Grub configuration
 sudo ./"$PROJECT_DIR/grub/GreyFocus/install.sh"
 
