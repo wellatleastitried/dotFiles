@@ -98,7 +98,7 @@ if ($verbose) {
     }
 }
 if ($open_count eq 1) {
-    print color('blue'), "There is 1 port open on $host\n", color('reset');
+    print color('blue'), "There is 1 port open on $host in the range of ports: $start_port-$end_port.\n", color('reset');
 } else {
-    print color('blue'), "There are $open_count ports open on $host\n", color('reset');
+    print color('blue'), "There are $open_count ports open on $host in the range of ports: $start_port-$end_port.\n", color('reset');
 }
