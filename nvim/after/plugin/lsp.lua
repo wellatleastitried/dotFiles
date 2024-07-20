@@ -1,14 +1,14 @@
 local lsp = require('lsp-zero')
+--local java = require('java')
 
 lsp.preset('recommended')
 
-require('mason').setup({})
+require('mason').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {
         'tsserver',
         'eslint',
         'rust_analyzer',
-        'jdtls',
         'perlnavigator',
         'bashls',
         'lua_ls',
@@ -27,6 +27,29 @@ require('mason-lspconfig').setup({
                         }
                     }
                 }
+            }
+        end,
+        ['jdtls'] = function()
+            local lspconfig = require('lspconfig')
+            local root_dir = vim.fs.dirname(vim.fs.find({ '.git', '.classpath' }, { upward = true })[1])
+            --java.setup()
+            lspconfig.jdtls.setup {
+                cmd = { 'jdtls' },
+                root_dir = function()
+                    return vim.fs.dirname(vim.fs.find({'.git', '.classpath' }, { upward = true })[1])
+                end,
+                settings = {
+                    java = {
+                        configuration = {
+                            runtimes = {
+                                {
+                                    name = "JavaSE-21",
+                                    path = "/usr/lib/jvm/java-21-openjdk"
+                               },
+                            },
+                        },
+                    },
+                },
             }
         end,
     },

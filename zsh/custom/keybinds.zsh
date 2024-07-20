@@ -3,7 +3,7 @@
 # Enter current editor here
 # EDITOR='zed' # Uncomment this line for Zed
 # EDITOR='nvim' # Uncomment this line for Neovim
-EDITOR='code' # Uncomment this line for VSCode
+EDITOR='nvim' # Uncomment this line for VSCode
 # EDITOR='subl' # Uncomment this line for Sublime Text
 
 # Open current directory in intellij
@@ -21,23 +21,20 @@ bindkey '^J' ij_widget
 
 # Fuzzy finder for all files to open in editor
 fzf_widget() {
-    CURRENT_DIR=$(pwd)
-    cd
     FILE="$(find -type f | fzf --height=15)"
     if [ -n "$FILE" ]; then
         eval $EDITOR "$FILE"
     fi
-    cd $CURRENT_DIR
     zle reset-prompt
 }
 zle -N fzf_widget
 bindkey '^F' fzf_widget
 
-# Fuzzy finder for current directory
+# Fuzzy finder for directories
 fzf_local() {
-    FILE="$(find . -type f | fzf --height=15)"
-    if [ -n "$FILE" ]; then
-        eval $EDITOR "$FILE"
+    DIR="cd $(find . -type d -print | fzf)"
+    if [ -d "$DIR" ]; then
+        eval $EDITOR "$DIR"
     fi
     zle reset-prompt
 }

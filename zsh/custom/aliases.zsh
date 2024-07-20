@@ -13,5 +13,6 @@ alias checkEmail="$MY_HOME/.config/scripts/unreadEmail"
 alias webScan="$MY_HOME/.config/scripts/webScanner"
 alias setMonitorMode="$MY_HOME/.config/scripts/setMonitorMode"
 alias updateScriptRepo="$MY_HOME/Tools/GitTools/MiscScripts.sh"
+alias vim='nvim'
 
 source $REMOTE_TOOLS/kali.sh

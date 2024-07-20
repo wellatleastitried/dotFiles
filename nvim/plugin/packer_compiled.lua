@@ -150,6 +150,11 @@ _G.packer_plugins = {
     path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-dispatch"] = {
+    loaded = true,
+    path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    url = "https://github.com/tpope/vim-dispatch"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/vim-fugitive",
