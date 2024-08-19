@@ -3,6 +3,7 @@
 # Dependencies listed, in order:
 # yay
 # perl
+# qrencode
 # polybar
 # picom
 # oh-my-zsh
@@ -19,7 +20,7 @@ if ! command_exists yay; then
     echo "yay not installed: installing now..."
     sudo pacman -Syu --needed git base-devel
     git clone https://aur.archlinux.org/yay.git
-    cd yay
+    cd yay || echo "Error installing yay, exiting..." && exit
     makepkg -si
     cd ..
     rm -rf yay
@@ -34,6 +35,14 @@ if ! command_exists perl; then
     echo "Perl has been installed"
 else
     echo "Perl is already installed"
+fi
+
+if ! command_exists qrencode; then
+    echo "qrencode not installed: installing now..."
+    sudo pacman -S --needed qrencode
+    echo "qrencode has been installed."
+else
+    echo "qrencode is already installed."
 fi
 
 if ! command_exists polybar; then
