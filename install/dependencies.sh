@@ -36,7 +36,7 @@ if ! command_exists yay; then
     else
         echo "Copying yay from /tmp"
         echo "YAY DIRECTORY CONTENTS:" && ls /tmp/yay
-        echo "PWD IS $(pwd)"
+        echo "PWD IS $(pwd)" || echo "how the fuck did this error, exiting..." && exit 1
         mv /tmp/yay /tmp/dotFiles/yay || echo "yay not found in /tmp, exiting..." && exit 1
     fi
     echo "Current Directory contents:" && ls
