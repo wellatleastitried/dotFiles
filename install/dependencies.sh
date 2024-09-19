@@ -38,8 +38,9 @@ if ! command_exists yay; then
         ls /tmp
         cp -r /tmp/yay ./
     fi
+    echo "Current Directory contents:" && ls
     cd yay || echo "Error installing yay, exiting..." && exit
-    makepkg -si
+    makepkg -si || echo "Unable to make package for yay, exiting..." && exit
     cd ..
     rm -rf yay
     echo "yay has been installed."
