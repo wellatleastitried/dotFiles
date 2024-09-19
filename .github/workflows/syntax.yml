@@ -16,14 +16,7 @@ jobs:
     - name: Install linters and language interpreters
       run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            bash \
-            perl \
-            lua5.3 \
-            ruby \
-            shellcheck \
-            ruby-dev
-            
+          sudo apt-get install -y bash perl lua5.3 ruby shellcheck ruby-dev
           gem install rubocop --user-install
       
     - name: Lint Bash Scripts
@@ -43,4 +36,11 @@ jobs:
       run: find . -name "*.lua" -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs luac -p
       
     - name: Lint Ruby Scripts
-      run: find . -type f \( -name "*.rb" -o -exec grep -q -I '^#!.*\bruby\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs /home/runner/.local/share/gem/ruby/3.0.0/bin/rubocop -A
+      run: |
+          find . -type f \( -name "*.rb" -o -exec grep -q -I '^#!.*\bruby\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs /home/runner/.local/share/gem/ruby/3.0.0/bin/rubocop -A 2>&1 | tee /tmp/rubocop.txt
+          if grep -q 'error' /tmp/rubocop.txt; then
+            echo "Rubocop found errors!"
+            exit 1
+          else
+            echo "Ruby scripts passed!"
+          fi
