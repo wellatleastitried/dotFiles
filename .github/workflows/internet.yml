@@ -1,0 +1,14 @@
+name: Ensure Internet Access for Docker
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-internet:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test Internet Access
+      run: ping -c 4 google.com
