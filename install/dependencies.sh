@@ -17,11 +17,11 @@ command_exists() {
 }
 
 ping -c 4 google.com
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 if ! command_exists git; then
     echo "git not installed: installing now..."
-    sudo pacman -S --needed git base-devel
+    sudo pacman -S --needed --noconfirm git base-devel
     echo "git has been installed."
 else
     echo "git is already isntalled."
@@ -29,8 +29,8 @@ fi
 
 if ! command_exists yay; then
     echo "yay not installed: installing now..."
-    git clone https://aur.archlinux.org/yay.git || echo "Error installing yay, exiting..." && exit
-    cd yay
+    git clone https://aur.archlinux.org/yay.git
+    cd yay || echo "Error installing yay, exiting..." && exit
     makepkg -si
     cd ..
     rm -rf yay
@@ -41,7 +41,7 @@ fi
 
 if ! command_exists perl; then
     echo "Perl not installed: installing now..."
-    sudo pacman -S --needed perl perl-term-extendedcolor
+    sudo pacman -S --needed --noconfirm perl perl-term-extendedcolor
     echo "Perl has been installed"
 else
     echo "Perl is already installed"
@@ -49,7 +49,7 @@ fi
 
 if ! command_exists qrencode; then
     echo "qrencode not installed: installing now..."
-    sudo pacman -S --needed qrencode
+    sudo pacman -S --needed --noconfirm qrencode
     echo "qrencode has been installed."
 else
     echo "qrencode is already installed."
@@ -57,7 +57,7 @@ fi
 
 if ! command_exists polybar; then
     echo "Polybar not installed: installing now..."
-    sudo pacman -S --needed polybar
+    sudo pacman -S --needed --noconfirm polybar
     echo "Polybar has been installed."
 else
     echo "Polybar is already installed."
@@ -65,7 +65,7 @@ fi
 
 if ! command_exists picom; then
     echo "Picom not installed: installing now..."
-    sudo pacman -S --needed picom
+    sudo pacman -S --needed --noconfirm picom
     echo "Picom has been installed."
 else
     echo "Picom is already installed."
@@ -81,7 +81,7 @@ fi
 
 if ! command_exists rofi; then
     echo "Rofi is not installed: installing now..."
-    sudo pacman -S --needed rofi
+    sudo pacman -S --needed --noconfirm rofi
     echo "rofi has been installed."
 else
     echo "Rofi is already installed."
@@ -89,7 +89,7 @@ fi
 
 if ! command_exists dmenu; then
     echo "dmenu is not installed: installing now..."
-    sudo pacman -S --needed dmenu
+    sudo pacman -S --needed --noconfirm dmenu
     echo "dmenu has been installed."
 else
     echo "dmenu is already installed."
@@ -97,7 +97,7 @@ fi
 
 if ! command_exists neofetch; then
     echo "neofetch is not installed: installing now..."
-    sudo pacman -S --needed neofetch
+    sudo pacman -S --needed --noconfirm neofetch
     echo "neofetch has been installed"
 else
     echo "neofetch is already installed."
@@ -105,7 +105,7 @@ fi
 
 if ! command_exists nvim; then
     echo "nvim is not installed: installing now..."
-    sudo pacman -S --needed nvim
+    sudo pacman -S --needed --noconfirm nvim
     echo "nvim has been installed"
 else
     echo "nvim is already installed."
