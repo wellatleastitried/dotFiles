@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Dependencies listed, in order:
+# git
 # yay
 # perl
 # qrencode
@@ -34,11 +35,9 @@ if ! command_exists yay; then
         git clone https://aur.archlinux.org/yay.git
     else
         echo "Copying yay from /tmp"
-        echo "TEMP DIRECTORY CONTENTS:" && ls /tmp
         echo "YAY DIRECTORY CONTENTS:" && ls /tmp/yay
         echo "PWD IS $(pwd)"
-        echo "CURRENT DIRECTORY CONTENTS:" && ls || echo "Could not list pwd" && exit 1
-        mv /tmp/yay /workspace/yay || echo "yay not found in /tmp, exiting..." && exit 1
+        mv /tmp/yay /tmp/dotFiles/yay || echo "yay not found in /tmp, exiting..." && exit 1
     fi
     echo "Current Directory contents:" && ls
     cd yay || echo "Error installing yay, exiting..." && exit 1
