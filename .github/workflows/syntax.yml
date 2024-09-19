@@ -25,16 +25,6 @@ jobs:
             ruby-dev
             
           gem install rubocop --user-install
-
-    - name: Test Bash Linter
-      run: |
-          shellcheck ./scripts/wifiHandler 2>&1 | tee /tmp/shellcheck.txt
-          if grep -q 'error:' /tmp/shellcheck.txt; then
-            echo "Shellcheck found an error!"
-            exit 1
-          else
-            echo "Bash scripts passed!"
-          fi
       
     - name: Lint Bash Scripts
       run: |
@@ -47,10 +37,10 @@ jobs:
           fi
           
     - name: Lint Perl Scripts
-      run: find . -type f \( -name "*.pl" -o -name "*.pm" -o -exec grep -I1 '^#!.*\bperl\b' {} \; \) -print0 | xargs -0 realpath | xargs -0 -I {} perl -c {}
+      run: find . -type f \( -name "*.pl" -o -name "*.pm" -o -exec grep -I1 '^#!.*\bperl\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs -I {} perl -c {}
 
     - name: Lint Lua Scripts
-      run: find . -name "*.lua" -print0 | xargs -0 realpath | xargs -0 luac -p
+      run: find . -name "*.lua" -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs luac -p
       
     - name: Lint Ruby Scripts
-      run: find . -type f \( -name "*.rb" -o -exec grep -I1 '^#!.*\bruby\b' {} \; \) -print0 | xargs -0 realpath | xargs -0 rubocop
+      run: find . -type f \( -name "*.rb" -o -exec grep -I1 '^#!.*\bruby\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs rubocop
