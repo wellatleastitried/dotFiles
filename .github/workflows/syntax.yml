@@ -28,7 +28,7 @@ jobs:
       
     - name: Lint Bash Scripts
       run: |
-          find . -type f \( -name "*.sh" -o -exec grep -q -I1 '^#!.*\bbash\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs shellcheck 2>&1 | tee /tmp/shellcheck.txt
+          find . -type f \( -name "*.sh" -o -exec grep -q -I '^#!.*\bbash\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs shellcheck 2>&1 | tee /tmp/shellcheck.txt
           if grep -q 'error:' /tmp/shellcheck.txt; then
             echo "Shellcheck found errors!"
             exit 1
@@ -37,7 +37,7 @@ jobs:
           fi
           
     - name: Lint Perl Scripts
-      run: find . -type f \( -name "*.pl" -o -name "*.pm" -o -exec grep -I1 '^#!.*\bperl\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs -I {} perl -c {}
+      run: find . -type f \( -name "*.pl" -o -name "*.pm" -o -exec grep -q -I '^#!.*\bperl\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs -I {} perl -c {}
 
     - name: Lint Lua Scripts
       run: find . -name "*.lua" -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs luac -p
