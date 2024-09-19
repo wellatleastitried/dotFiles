@@ -14,6 +14,7 @@ alias webScan="$MY_HOME/.config/scripts/webScanner"
 alias setMonitorMode="$MY_HOME/.config/scripts/setMonitorMode"
 alias updateScriptRepo="$MY_HOME/Tools/GitTools/MiscScripts.sh"
 alias vim='nvim'
-alias justDrive="$MY_HOME/Tools/WarDrive/justDrive"
+alias startDriving="bash $MY_HOME/Github/JustDrive/start.sh"
+alias stopDriving="bash $MY_HOME/Github/JustDrive/kill.sh"
 
 #source $REMOTE_TOOLS/kali.sh
