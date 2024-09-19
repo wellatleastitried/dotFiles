@@ -34,6 +34,8 @@ if ! command_exists yay; then
         git clone https://aur.archlinux.org/yay.git
     else
         echo "Copying yay from /tmp"
+        echo "/tmp:"
+        ls /tmp
         cp /tmp/repos/yay ./
     fi
     cd yay || echo "Error installing yay, exiting..." && exit
