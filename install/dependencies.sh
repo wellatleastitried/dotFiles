@@ -16,13 +16,12 @@ command_exists() {
     command -v "$1" &> /dev/null
 }
 
-ping -c 4 google.com
 sudo pacman -Syu --noconfirm
 
 if ! command_exists git; then
     echo "git not installed: installing now..."
     sudo pacman -S --needed --noconfirm git base-devel
-    git config --global init.defaultBranch master
+    git config --global init.defaultBranch main
     echo "git has been installed."
 else
     echo "git is already installed."
