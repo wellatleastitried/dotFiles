@@ -37,8 +37,8 @@ if ! command_exists yay; then
         echo "TEMP DIRECTORY CONTENTS:" && ls /tmp
         echo "YAY DIRECTORY CONTENTS:" && ls /tmp/yay
         echo "PWD IS $(pwd)"
-        echo "CURRENT DIRECTORY CONTENTS:" && ls
-        mv /tmp/yay /workspace/yay || "yay not found in /tmp, exiting..." && exit 1
+        echo "CURRENT DIRECTORY CONTENTS:" && ls || echo "Could not list pwd" && exit 1
+        mv /tmp/yay /workspace/yay || echo "yay not found in /tmp, exiting..." && exit 1
     fi
     echo "Current Directory contents:" && ls
     cd yay || echo "Error installing yay, exiting..." && exit 1
