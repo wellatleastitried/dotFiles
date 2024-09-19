@@ -36,7 +36,7 @@ if ! command_exists yay; then
         echo "Copying yay from /tmp"
         echo "/tmp:"
         ls /tmp
-        cp /tmp/yay ./
+        cp -r /tmp/yay ./
     fi
     cd yay || echo "Error installing yay, exiting..." && exit
     makepkg -si
