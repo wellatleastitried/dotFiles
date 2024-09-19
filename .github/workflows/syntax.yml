@@ -38,7 +38,7 @@ jobs:
     - name: Lint Ruby Scripts
       run: |
           find . -type f \( -name "*.rb" -o -exec grep -q -I '^#!.*\bruby\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs /home/runner/.local/share/gem/ruby/3.0.0/bin/rubocop -A 2>&1 | tee /tmp/rubocop.txt
-          if grep -q 'error' /tmp/rubocop.txt; then
+          if grep -q 'error|warning|fatal' /tmp/rubocop.txt; then
             echo "Rubocop found errors!"
             exit 1
           else
