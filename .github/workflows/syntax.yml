@@ -43,4 +43,4 @@ jobs:
       run: find . -name "*.lua" -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs luac -p
       
     - name: Lint Ruby Scripts
-      run: find . -type f \( -name "*.rb" -o -exec grep -q -I '^#!.*\bruby\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs /home/runner/.local/share/gem/ruby/3.0.0/bin/rubocop -a
+      run: find . -type f \( -name "*.rb" -o -exec grep -q -I '^#!.*\bruby\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs /home/runner/.local/share/gem/ruby/3.0.0/bin/rubocop -A
