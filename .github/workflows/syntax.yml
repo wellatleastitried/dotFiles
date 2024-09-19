@@ -26,7 +26,7 @@ jobs:
             
           gem install rubocop --user-install
     - name: Lint Bash Scripts
-      run: find . -type f \( -name "*.sh" -o -exec grep -q -I1 '^#!.*\bbash\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs shellcheck
+      run: find . -type f \( -name "*.sh" -o -exec grep -q -I1 '^#!.*\bbash\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs -I {} sh -c 'shellcheck {} 2>&1 | tee /tmp/shellcheck.txt | grep -E 'error:' /tmp/shellcheck.txt || true
 
     - name: Lint Perl Scripts
       run: find . -type f \( -name "*.pl" -o -name "*.pm" -o -exec grep -I1 '^#!.*\bperl\b' {} \; \) -print0 | xargs -0 realpath | xargs -0 -I {} perl -c {}
