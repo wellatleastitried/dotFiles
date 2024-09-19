@@ -22,6 +22,7 @@ sudo pacman -Syu --noconfirm
 if ! command_exists git; then
     echo "git not installed: installing now..."
     sudo pacman -S --needed --noconfirm git base-devel
+    git config --global init.defaultBranch master
     echo "git has been installed."
 else
     echo "git is already isntalled."
