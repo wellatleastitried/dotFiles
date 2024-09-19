@@ -27,7 +27,14 @@ jobs:
           gem install rubocop --user-install
 
     - name: Test Bash Linter
-      run: shellcheck ./scripts/wifiHandler
+      run: |
+          shellcheck ./scripts/wifiHandler 2>&1 | tee /tmp/shellcheck.txt
+          if grep -q 'error:' /tmp/shellcheck.txt; then
+            echo "Shellcheck found an error!"
+            exit 1
+          else
+            echo "Bash scripts passed!"
+          fi
       
     - name: Lint Bash Scripts
       run: find . -type f \( -name "*.sh" -o -exec grep -q -I1 '^#!.*\bbash\b' {} \; \) -print | xargs realpath | sed 's/^[^/]*//g' | grep '^/home/' | xargs shellcheck
