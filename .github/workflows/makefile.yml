@@ -14,7 +14,9 @@ jobs:
       uses: actions/checkout@v4
     - name: Set up Docker and Configure Arch Linux
       run: |
+        echo "THIS IS THE START DIR: $(pwd)" && ls
         cd ..
+        echo "THIS IS THE WORKING DIR: $(pwd)" && ls
         git clone https://aur.archlinux.org/yay.git
         ls
         docker pull archlinux:latest
