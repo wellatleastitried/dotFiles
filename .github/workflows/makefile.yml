@@ -13,6 +13,6 @@ jobs:
     - name: Set up Docker and run Arch Linux
       uses: actions/checkout@v4
     - run: |
-        docker network ls
         docker pull archlinux:latest
+        docker run --rm archlinux ping -c 4 8.8.8.8
         docker run --dns 8.8.8.8 --network bridge -v ${{ github.workspace }}:/workspace -w /workspace archlinux:latest bash -c "pacman -Syu --noconfirm && pacman -S --noconfirm base-devel make gcc && chmod +rx ./install/dependencies.sh && chmod +rx ./install/env.sh && chmod +rx ./install/install.sh && make all"
