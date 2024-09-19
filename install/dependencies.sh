@@ -18,13 +18,17 @@ command_exists() {
 
 sudo pacman -Syu
 
+if ! command_exists git; then
+    echo "git not installed: installing now..."
+    sudo pacman -S --needed git base-devel
+    echo "git has been installed."
+    git --help
+else
+    echo "git is already isntalled."
+fi
+
 if ! command_exists yay; then
     echo "yay not installed: installing now..."
-    if ! command_exists git; then
-        echo "git not installed: installing now..."
-        sudo pacman -S --needed git base-devel
-        echo "git has been installed."
-    fi
     git clone https://aur.archlinux.org/yay.git
     cd yay || echo "Error installing yay, exiting..." && exit
     makepkg -si
