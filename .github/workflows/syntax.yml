@@ -1,0 +1,38 @@
+name: Syntax Checking
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Scan code syntax
+      uses: actions/checkout@v4
+
+    - name: Install linters and language interpreters
+      run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            bash \
+            perl \
+            lua5.3 \
+            ruby \
+            shellcheck \
+            ruby-dev
+            
+          gem install rubocop
+    - name: Lint Bash Scripts
+      run: find . -type f \( -name "*.sh" -o -exec grep -I1 '^#!.*\bbash\b' {} \; \) -print0 | xargs -0 shellcheck
+
+    - name: Lint Perl Scripts
+      run: find . -type f \( -name "*.pl" -o -name "*.pm" -o -exec grep -I1 '^#!.*\bperl\b' {} \; \) -print0 | xargs -0 -I {} perl -c {}
+
+    - name: Lint Lua Scripts
+      run: find . -name "*.lua" -print0 | xargs -0 luac -p
+      
+    - name: Lint Ruby Scripts
+      run: find . -type f \( -name "*.rb" -o -exec grep -I1 '^#!.*\bruby\b' {} \; \) -print0 | xargs -0 rubocop
