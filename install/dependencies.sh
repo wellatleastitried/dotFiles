@@ -25,12 +25,18 @@ if ! command_exists git; then
     git config --global init.defaultBranch master
     echo "git has been installed."
 else
-    echo "git is already isntalled."
+    echo "git is already installed."
 fi
 
 if ! command_exists yay; then
     echo "yay not installed: installing now..."
-    git clone https://aur.archlinux.org/yay.git
+    if ping -c 4 google.com; then
+        echo "Pulling yay from arch repo..."
+        git clone https://aur.archlinux.org/yay.git
+    else
+        echo "Copying yay from /tmp"
+        cp /tmp/repos/yay ./
+    fi
     cd yay || echo "Error installing yay, exiting..." && exit
     makepkg -si
     cd ..
