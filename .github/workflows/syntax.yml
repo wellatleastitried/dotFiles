@@ -24,7 +24,7 @@ jobs:
             shellcheck \
             ruby-dev
             
-          gem install rubocop
+          gem install rubocop --user-install
     - name: Lint Bash Scripts
       run: find . -type f \( -name "*.sh" -o -exec grep -I1 '^#!.*\bbash\b' {} \; \) -print0 | xargs -0 shellcheck
 
