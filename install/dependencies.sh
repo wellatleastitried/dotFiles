@@ -34,15 +34,13 @@ if ! command_exists yay; then
         git clone https://aur.archlinux.org/yay.git
     else
         echo "Copying yay from /tmp"
-        echo "/tmp:"
-        ls /tmp
-        cp -r /tmp/yay ./
+        cp -r /tmp/yay ./ || "yay not found in /tmp, exiting..." && exit 1
     fi
     echo "Current Directory contents:" && ls
-    cd yay || echo "Error installing yay, exiting..." && exit
-    makepkg -si || echo "Unable to make package for yay, exiting..." && exit
+    cd yay || echo "Error installing yay, exiting..." && exit 1
+    makepkg -si || echo "Unable to make package for yay, exiting..." && exit 1
     cd ..
-    rm -rf yay
+    sudo rm -rf yay || echo "Error removing files, exiting..." && exit 1
     echo "yay has been installed."
 else
     echo "yay is already installed."
