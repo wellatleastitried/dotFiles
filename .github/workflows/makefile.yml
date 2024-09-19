@@ -10,9 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Set up Docker and run Arch Linux
+    - name: Set up Actions
       uses: actions/checkout@v4
-    - run: |
+    - name: Set up Docker and Configure Arch Linux
+      run: |
+        pwd
         mkdir repos/ && cd repos
         git clone https://aur.archlinux.org/yay.git
         cd ..
