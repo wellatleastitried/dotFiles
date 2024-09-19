@@ -34,6 +34,10 @@ if ! command_exists yay; then
         git clone https://aur.archlinux.org/yay.git
     else
         echo "Copying yay from /tmp"
+        echo "TEMP DIRECTORY CONTENTS:" && ls /tmp
+        echo "YAY DIRECTORY CONTENTS:" && ls /tmp/yay
+        echo "PWD IS $(pwd)"
+        echo "CURRENT DIRECTORY CONTENTS:" && ls
         cp -r /tmp/yay ./ || "yay not found in /tmp, exiting..." && exit 1
     fi
     echo "Current Directory contents:" && ls
