@@ -1,0 +1,21 @@
+name: Validate Makefile
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker and run Arch Linux
+    - run: |
+        docker pull archlinux:latest
+        docker run -v ${{ github.workspace }}:/workspace -w /workspace archlinux:latest bash -c "pacman -Syu --noconfirm && pacman -S --noconfirm base-devel make gcc && make all"
