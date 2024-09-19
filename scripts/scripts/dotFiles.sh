@@ -1,0 +1,221 @@
+#!/bin/bash
+
+TARGET="$HOME/Github/dotFiles"
+CONFIGS="$HOME/.config"
+cd "$TARGET" || { echo "Directory $TARGET not found!"; exit 1; }
+
+# Delete current files in github repo
+clear_repo() {
+    find . -mindepth 1 -maxdepth 1 ! \( -name ".git" -o -name "README.md" -o -name ".github" -o "install" \) -exec rm -rf {} +
+}
+# Move these files to the github repo
+fill_repo() {
+    echo 'Pulling repo from remote...'
+    git pull origin main
+
+    # i3 config
+    if [ -d "$CONFIGS/i3" ]; then
+        echo "i3 config found: adding to repo..."
+        cp -r "$CONFIGS/i3" ./i3
+    else
+        echo "i3 directory does not exist!"
+    fi
+
+    # picom conf
+    if [ -d "$CONFIGS/picom" ]; then
+        echo "picom config found: adding to repo..."
+        cp -r "$CONFIGS/picom" ./picom
+    else
+        echo "Picom directory does not exist!"
+    fi
+
+    # Misc Scripts
+    if [ -d "$CONFIGS/scripts" ]; then
+        echo "Script directory found: adding to repo..."
+        cp -r "$CONFIGS/scripts" ./scripts
+        if [ -f "$CONFIGS/scripts/dotFiles.sh" ]; then
+            rm ./scripts/dotFiles.sh
+        fi
+    else
+        echo "Script directory does not exist!"
+    fi
+
+    # ZSHRC file
+    if [ -f "$HOME/.zshrc" ]; then
+        if [ ! -d ./zsh ]; then
+            echo "zsh directory did not exist in repo: creating now..."
+            mkdir ./zsh
+        fi
+        echo ".zshrc config found: adding to repo..."
+        cp -r "$HOME/.zshrc" ./zsh/.zshrc
+    else
+        echo ".zshrc config does not exist!"
+    fi
+
+    # zshrc aliases-to-source
+    if [ -f "$HOME/.oh-my-zsh/custom/aliases.zsh" ]; then
+        if [ ! -d ./zsh/custom ]; then
+            echo "zsh directory did not exist in repo: creating now..."
+            mkdir -p ./zsh/custom
+        fi
+        echo "aliases.zsh config found: adding to repo..."
+        cp -r "$HOME/.oh-my-zsh/custom/aliases.zsh" ./zsh/custom/aliases.zsh
+    else
+        echo "aliases.zsh config does not exist!"
+    fi
+
+    # Remotely executed kali commands
+    if [ -f "$HOME/Tools/SSHTools/kali.sh" ]; then
+        if [ ! -d ./zsh/custom ]; then
+            echo "zsh directory did not exist in repo: creating now..."
+            mkdir -p ./zsh/custom
+        fi
+        echo "kali.sh config found: adding to repo..."
+        cp -r "$HOME/Tools/SSHTools/kali.sh" ./zsh/custom/kali.sh
+    else
+        echo "kali.sh config does not exist!"
+    fi
+
+    # Keybinds for zsh
+    if [ -f "$HOME/.oh-my-zsh/custom/keybinds.zsh" ]; then
+        if [ ! -d ./zsh/custom ]; then
+            echo "zsh directory did not exist in repo: creating now..."
+            mkdir -p ./zsh/custom
+        fi
+        echo "keybinds.zsh config found: adding to repo..."
+        cp -r "$HOME/.oh-my-zsh/custom/keybinds.zsh" ./zsh/custom/keybinds.zsh
+    else
+        echo "keybinds.zsh config does not exist!"
+    fi
+    
+    # zsh themes
+    if [ -f "$HOME/.oh-my-zsh/themes/passion.zsh-theme" ]; then
+        if [ ! -d ./zsh/themes ]; then
+            echo "zsh themes directory did not exist in repo: creating now..."
+            mkdir -p ./zsh/themes
+        fi
+        echo "passion.zsh-theme found: adding to repo..."
+        cp -r "$HOME/.oh-my-zsh/themes/passion.zsh-theme" ./zsh/themes/passion.zsh-theme
+        echo "cool.zsh theme found: adding to repo..."
+        cp -r "$HOME/.oh-my-zsh/themes/cool.zsh" ./zsh/themes/cool.zsh
+    else
+        echo "passion.zsh-theme does not exist"
+    fi
+
+    # Rofi config
+    if [ -f "$HOME/.config/rofi/config.rasi" ]; then
+        if [ ! -d ./rofi ]; then
+            echo "rofi directory did not exist in repo: creating now..."
+            mkdir ./rofi
+        fi
+        echo "Rofi config found: adding to repo..."
+        cp -r "$HOME/.config/rofi/config.rasi" ./rofi/config.rasi
+    else
+        echo "Rofi config does not exist!"
+    fi
+
+    # Polybar config
+    if [ -d "$HOME/.config/polybar" ]; then
+        echo "Polybar directory found: adding files to repo..."
+        cp -r "$HOME/.config/polybar" ./polybar
+    else
+        echo "Polybar directory does not exist!"
+    fi
+    
+    # Install scripts
+    if [ -d "$HOME/Documents/Dotfiles" ]; then
+        echo "Install scripts found: adding files to repo..."
+        cp -r "$HOME/Documents/Dotfiles/." ./
+    else
+        echo "Install directory does not exist!"
+    fi
+    
+    # i3blocks config/scripts
+    if [ -d "$HOME/.config/i3blocks" ]; then
+        if [ -f "$HOME/.config/i3blocks/i3blocks.conf" ]; then
+            echo "i3blocks config found: adding file to repo..."
+            if [ ! -d ./i3blocks ]; then
+                echo "i3blocks directory did not exist in repo: creating now..."
+                mkdir ./i3blocks
+            fi
+            cp -r "$HOME/.config/i3blocks/i3blocks.conf" ./i3blocks
+        else
+            echo "i3blocks config does not exist!"
+        fi
+        if [ -d "$HOME/.config/i3blocks/scripts" ]; then
+            echo "i3blocks script directory found: adding files to repo..."
+            if [ ! -d ./i3blocks/scripts ]; then
+                echo "i3blocks script directory did not exist in repo: creating now..."
+                mkdir ./i3blocks/scripts
+            fi
+            cp -r "$HOME/.config/i3blocks/scripts/." ./i3blocks/scripts
+        else
+            echo "Scripts for i3blocks do not exist!"
+        fi
+    fi 
+    
+    # Neofetch config
+    if [ -f "$HOME/.config/neofetch/config.conf" ]; then
+        echo "Neofetch config found: adding file to repo..."
+        if [ ! -d ./neofetch ]; then
+            echo "Neofetch directory did not exist in repo: creating now..."
+            mkdir ./neofetch
+        fi
+        cp -r "$HOME/.config/neofetch/config.conf" ./neofetch/config.conf
+    else
+        echo "Neofetch config does not exist!"
+    fi
+    
+    # Grub config
+    if [ -d "$HOME/Documents/GreyFocus-grub2theme-main" ]; then
+        echo "Grub configs found: adding directory to repo..."
+        if [ ! -d ./grub ]; then
+            echo "Grub directory did not exist in repo: creating now..."
+            mkdir ./grub
+        fi
+        cp -r "$HOME/Documents/GreyFocus-grub2theme-main" ./grub/GreyFocus
+        if [ ! -f ./grub/README.md ]; then
+            echo "Adding README.md for grub configs to repo..."
+            cp "$HOME/.config/grub/README.md" ./grub
+        fi
+    else
+        echo "Grub configs do not exist!"
+    fi
+    
+    # Neovim configs
+    if [ -d "$HOME/.config/nvim" ]; then
+        echo "Neovim configs found: adding directory to repo..."
+        if [ ! -d ./nvim ]; then
+            echo "nvim directory did not exist in repo: creating now..."
+            mkdir ./nvim
+        fi
+        cp -r "$HOME/.config/nvim" .
+    fi
+}
+
+# Add and commit new files
+add_commit_push() {
+    echo "Adding configs to git..."
+    git add .
+    if ! git diff-index HEAD --; then
+        echo "No changes to commit: exiting..."
+        exit 0
+    else
+        echo "Commiting changes to configs..."
+        git commit -m "Updated configs"
+    fi
+    # Check whether to push to remote
+    read -r -p "Would you like to push to remote? (Y/n): " user_input
+    if [[ $user_input =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        echo "Pushing commit to remote..."
+        git push origin main
+        echo "Dotfiles have been successfully updated!"
+    else
+        echo "Changes have been committed, exiting now..."
+        exit 1
+    fi
+}
+
+clear_repo
+fill_repo
+add_commit_push

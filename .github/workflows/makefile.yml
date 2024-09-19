@@ -20,4 +20,4 @@ jobs:
         git clone https://aur.archlinux.org/yay.git
         cd ..
         docker pull archlinux:latest
-        docker run -v $(pwd)/repos/:/tmp/ --network bridge -v ${{ github.workspace }}:/workspace -w /workspace archlinux:latest bash -c "pacman -Syu --noconfirm && pacman -S --noconfirm base-devel make gcc && chmod +rx ./install/dependencies.sh && chmod +rx ./install/env.sh && chmod +rx ./install/install.sh && make all"
+        docker run -v $(pwd)/:/tmp/ --network bridge -v ${{ github.workspace }}:/workspace -w /workspace archlinux:latest bash -c "pacman -Syu --noconfirm && pacman -S --noconfirm base-devel make gcc && cd /tmp/ && chmod +rx ./install/dependencies.sh && chmod +rx ./install/env.sh && chmod +rx ./install/install.sh && make all"
