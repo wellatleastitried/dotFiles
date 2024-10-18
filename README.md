@@ -2,6 +2,9 @@
 
 These are the configuration files that I use in my Arch Linux setup. I will continue to update and add more configurations as I automate and modify my setup.
 
+## NOTICE
+
+Honestly, I haven't tested it and I don't think the Makefile works right now so you can either manually run the bash scripts (located in the install directory) in the same order that the Makefile calls them or copy the configs you want to the proper locations. I'll fix it in the near future though :)
 ## Installation
 
 To use these configuration files on your local system, follow these steps:
