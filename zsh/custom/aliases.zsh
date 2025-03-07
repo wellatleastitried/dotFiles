@@ -16,5 +16,6 @@ alias updateScriptRepo="$MY_HOME/Tools/GitTools/MiscScripts.sh"
 alias vim='nvim'
 alias startDriving="bash $MY_HOME/Github/JustDrive/start.sh"
 alias stopDriving="bash $MY_HOME/Github/JustDrive/kill.sh"
+alias audio-control="pavucontrol"
 
 #source $REMOTE_TOOLS/kali.sh

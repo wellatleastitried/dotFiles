@@ -6,7 +6,6 @@ lsp.preset('recommended')
 require('mason').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {
-        'tsserver',
         'eslint',
         'rust_analyzer',
         'perlnavigator',
