@@ -28,7 +28,3 @@ To use these configuration files on your local system, follow these steps:
 3. **Modify and Customize:**
 
    After installation, feel free to modify any of the configuration files according to your preferences. These files are intended to be a starting point and can be customized further based on your requirements.
-
-## Contributing
-
-If you have suggestions or improvements for these configurations, feel free to fork this repository and submit a pull request. Contributions are welcome!
