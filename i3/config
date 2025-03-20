@@ -245,7 +245,7 @@ bar {
 #####################################################################################
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill '/home/walitsnb/Pictures/wallpapers/cool_retro_city_thing.png'
+exec_always --no-startup-id feh --bg-fill '/home/walitsnb/Pictures/wallpapers/space5.jpg'
 
 # Assign programs to workspace
 for_window [class="firefox"] move to workspace $ws2
