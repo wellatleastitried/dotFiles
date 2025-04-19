@@ -2,12 +2,7 @@
 
 These are the configuration files that I use in my Arch Linux setup. I will continue to update and add more configurations as I automate and modify my setup.
 
-## NOTICE
-
-Honestly, I haven't tested it and I don't think the Makefile works right now so you can either manually run the bash scripts (located in the install directory) in the same order that the Makefile calls them or copy the configs you want to the proper locations. I'll fix it in the near future though :)
 ## Installation
-
-To use these configuration files on your local system, follow these steps:
 
 1. **Clone the repository:**
 
@@ -16,13 +11,12 @@ To use these configuration files on your local system, follow these steps:
    cd dotFiles
    ```
 
-2. **Run the Makefile:**
+2. **Run the install script:**
 
-   The Makefile includes targets for installing, updating, and configuring various aspects of your system. Here are some common targets:
-
-   - **make:** Installs necessary dependencies, installs all configuration files, and sets up the environment.
+   The install script will need to be ran as root as it will be installing missing packages.
      ```bash
-     make all
+     chmod +x install.sh
+     sudo ./install.sh
      ```
 
 3. **Modify and Customize:**
