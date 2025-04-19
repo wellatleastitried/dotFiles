@@ -11,6 +11,16 @@ require('mason-lspconfig').setup({
         'perlnavigator',
         'bashls',
         'lua_ls',
+        'nim_langserver',
+        'jsonls',
+        'asm_lsp',
+        'cmake',
+        'pylsp',
+        'kotlin_language_server',
+        'bashls',
+        'sqlls',
+        'html',
+        'dotls',
     },
     handlers = {
         function(server_name)
