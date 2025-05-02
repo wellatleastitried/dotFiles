@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1725453128/share/lua/5.1/?.lua;/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1725453128/share/lua/5.1/?/init.lua;/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1725453128/lib/luarocks/rocks-5.1/?.lua;/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1725453128/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1725453128/lib/lua/5.1/?.so"
+local package_path_str = "/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?.lua;/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?/init.lua;/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?.lua;/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/walitsnb/.cache/nvim/packer_hererocks/2.1.1741730670/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -83,6 +83,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   harpoon = {
     loaded = true,
@@ -134,6 +139,11 @@ _G.packer_plugins = {
     path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["refactoring.nvim"] = {
+    loaded = true,
+    path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
+    url = "https://github.com/ThePrimeagen/refactoring.nvim"
+  },
   ["rose-pine"] = {
     config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
     loaded = true,
@@ -160,6 +170,12 @@ _G.packer_plugins = {
     path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-hexokinase"] = {
+    config = { "\27LJ\2\nô\1\0\0\2\0\b\0\r6\0\0\0009\0\1\0005\1\3\0=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0006\0\0\0009\0\1\0005\1\a\0=\1\6\0K\0\1\0\1\a\0\0\rfull_hex\bhex\brgb\trgba\bhsl\thsla\29Hexokinase_optInPatterns\1\t\0\0\bcss\thtml\15javascript\15typescript\tjava\vpython\bnim\blua\25Hexokinase_ftEnabled\1\2\0\0\19backgroundfull\28Hexokinase_highlighters\6g\bvim\0" },
+    loaded = true,
+    path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/vim-hexokinase",
+    url = "https://github.com/RRethy/vim-hexokinase"
+  },
   ["vim-wakatime"] = {
     loaded = true,
     path = "/home/walitsnb/.local/share/nvim/site/pack/packer/start/vim-wakatime",
@@ -168,6 +184,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: vim-hexokinase
+time([[Config for vim-hexokinase]], true)
+try_loadstring("\27LJ\2\nô\1\0\0\2\0\b\0\r6\0\0\0009\0\1\0005\1\3\0=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0006\0\0\0009\0\1\0005\1\a\0=\1\6\0K\0\1\0\1\a\0\0\rfull_hex\bhex\brgb\trgba\bhsl\thsla\29Hexokinase_optInPatterns\1\t\0\0\bcss\thtml\15javascript\15typescript\tjava\vpython\bnim\blua\25Hexokinase_ftEnabled\1\2\0\0\19backgroundfull\28Hexokinase_highlighters\6g\bvim\0", "config", "vim-hexokinase")
+time([[Config for vim-hexokinase]], false)
 -- Config for: rose-pine
 time([[Config for rose-pine]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")

@@ -4,6 +4,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+    use 'github/copilot.vim'
     use 'wakatime/vim-wakatime'
 	use 'wbthomason/packer.nvim'
 	use {
@@ -22,34 +23,6 @@ return require('packer').startup(function(use)
 	use('ThePrimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
-    --[[
-    use {
-        'nvim-java/nvim-java',
-        require = {
-            'nvim-java/lua-async-await',
-            'nvim-java/nvim-java-refactor',
-            'nvim-java/nvim-java-core',
-            'nvim-java/nvim-java-test',
-            'nvim-java/nvim-java-dap',
-            'MunifTanjim/nui.nvim',
-            'neovim/nvim-lspconfig',
-            'mfussenegger/nvim-dap',
-            {
-                'JavaHello/spring-boot.nvim',
-                commit = '218c0c26c14d99feca778e4d13f5ec3e8b1b60f0',
-            },
-            {
-                'williamboman/mason.nvim',
-                opts = {
-                    registries = {
-                        'github:nvim-java/mason-registry',
-                        'github:mason-org/mason-registry',
-                    },
-                },
-            },
-        }
-    }
-    --]]
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -65,4 +38,28 @@ return require('packer').startup(function(use)
         }
     }
     use('tpope/vim-dispatch')
+    use {
+        'RRethy/vim-hexokinase',
+        run = 'make hexokinase',
+        config = function()
+            vim.g.Hexokinase_highlighters = { 'backgroundfull' }
+            vim.g.Hexokinase_ftEnabled = { 'css', 'html', 'javascript', 'typescript', 'java', 'python', 'nim', 'lua' }
+            vim.g.Hexokinase_optInPatterns = {
+                'full_hex',
+                'hex',
+                'rgb',
+                'rgba',
+                'hsl',
+                'hsla',
+            }
+        end
+    }
+    use "nvim-lua/plenary.nvim"
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        }
+    }
 end)
